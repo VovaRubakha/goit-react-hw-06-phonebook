@@ -10,7 +10,8 @@ const Filter = ({ filter, changeFilter }) => {
             </label>
             <input onChange={changeFilter}
                 name="filter"
-                type="text" value={filter}
+                type="text"
+                value={filter}
                 className={styles.input}>
             </input>
         </>
