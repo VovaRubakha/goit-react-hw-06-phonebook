@@ -1,8 +1,9 @@
-import { useState, useCallback } from "react";
+// import { useState, useCallback } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 
-import actionCreators from "./redux/contacts/contactsActionCreators";
-import { getContacts } from "./redux/contacts/contactsSelectors";
+import {actions} from "./redux/contacts/contact-slice";
+import { getContacts } from "./redux/contacts/contact-selector";
+import { setFilter } from "./redux/contacts/contact-selector";
 
 import ContactList from "./ContactList";
 import ContactForm from "./ContactForm";
@@ -11,14 +12,14 @@ import Filter from "./Filter";
 import styles from './App.module.css'
 
 const App = () => {
-  const [filter, setFilter] = useState('')
-
-  //-------
+  // const [filter, setFilter] = useState('')
   const contacts = useSelector(getContacts, shallowEqual);
+  const filter = useSelector(setFilter, shallowEqual);
   const dispatch = useDispatch();
 
   const addContact = (data) => {
-    const action = actionCreators.addContact(data);
+    const action = actions.addContact(data);
+    console.log(data);
     const dublicate = contacts.find(item => item.name === data.name);
     if(dublicate){
           alert(`${data.name} is already in contacts list`);
@@ -28,13 +29,12 @@ const App = () => {
   };
 
   const deleteContact = (id) => {
-    dispatch(actionCreators.deleteContact(id))
+    dispatch(actions.deleteContact(id))
   };
-  //----
 
-  const changeFilter = useCallback(({ target }) => {
-    setFilter(target.value)
-  }, []);
+  const changeFilter = ({ target }) => { 
+    dispatch(actions.setFilter(target.value));
+  };
 
   const getFilteredContacts = () => {
     if (!filter) {
