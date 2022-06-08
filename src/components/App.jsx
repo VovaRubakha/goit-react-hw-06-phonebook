@@ -8,7 +8,6 @@ import Filter from "./Filter";
 
 import {
   getContacts,
-  // setFilter,
   getLoading,
   getError,
 } from "../redux/contacts/contact-selector";
@@ -20,7 +19,6 @@ import styles from './App.module.css'
 const App = () => {
   const [filter, setFilter] = useState("");
   const contacts = useSelector(getContacts, shallowEqual);
-  // const filter = useSelector(setFilter, shallowEqual);
   const loading = useSelector(getLoading, shallowEqual);
   const error = useSelector(getError, shallowEqual);
 
@@ -42,10 +40,6 @@ const App = () => {
   const changeFilter = useCallback(({ target }) =>  
     setFilter(target.value), [setFilter]);
 
-
-  // const changeFilter = ({ target }) => { 
-  //   dispatch(operations.setFilter(target.value));
-  // };
   const getFilteredContacts = () => {
     if (!filter) {
       return contacts

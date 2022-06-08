@@ -69,23 +69,6 @@ const contactsSlice = createSlice({
       error: payload,
     }),
     // -----
-    // ----Filter contacts
-    // [operations.filterContact.pending]: state => ({
-    //   ...state,
-    //   loading: true,
-    //   error: null,
-    // }),
-    // [operations.filterContact.fulfilled]: (state, { payload }) => ({
-    //   ...state,
-    //   loading: false,
-    //   filter: payload,
-    // }),
-    // [operations.filterContact.rejected]: (state, { payload }) => ({
-    //   ...state,
-    //   loading: false,
-    //   error: payload,
-    // }),
-    // -----
   },
 });
 

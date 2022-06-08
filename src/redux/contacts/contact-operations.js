@@ -48,15 +48,3 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
-
-// export const filterContact = createAsyncThunk(
-//   'contacts/filterContact',
-//   async (_, { rejectWithValue }) => {
-//     const data = await API.getContacts();
-//     try {
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
